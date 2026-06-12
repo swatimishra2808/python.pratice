@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevPaper v2 | Creative Portfolio & Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-glow: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --accent-color: #06b6d4;
+            --bg-color: #0b0f19;
+            --card-bg: rgba(22, 28, 45, 0.6);
+            --text-color: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="light"] {
+            --primary-glow: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+            --accent-color: #0284c7;
+            --bg-color: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --text-color: #0f172a;
+            --text-muted: #64748b;
+            --border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        /* Reading Progress Bar */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 9999;
+        }
+        #progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--primary-glow);
+            transition: width 0.1s ease-out;
+        }
+
+        /* Glassmorphic Navbar */
+        .navbar {
+            background: var(--card-bg) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Creative Hero Section with Animated Background Gradients */
+        .hero-creative {
+            position: relative;
+            padding: 120px 0 80px;
+            background: radial-gradient(circle at 90% 10%, rgba(99, 102, 241, 0.15), transparent 40%),
+                        radial-gradient(circle at 10% 90%, rgba(6, 182, 212, 0.12), transparent 40%);
+        }
+
+        /* Custom Glassmorphic Cards */
+        .blog-card-creative {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .blog-card-creative:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            transition: transform 0.5s ease;
+        }
+
+        .blog-card-creative:hover .card-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        /* Interactive Category Badges */
+        .category-pill {
+            background: rgba(99, 102, 241, 0.1);
+            color: #a855f7;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-pill.active, .category-pill:hover {
+            background: var(--primary-glow);
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+        }
+
+        /* Floating Sidebar Widgets */
+        .sidebar-creative {
+            background: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Smooth Hide/Show Filter Animation classes */
+        .post-item {
+            transition: all 0.4s ease;
+        }
+        .post-item.hidden {
+            display: none;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-container"><div id="progress-bar"></div></div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-extrabold fs-3 text-transparent bg-clip-text" href="#" style="background: var(--primary-glow); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">DevPaper.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#">Explore</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Architectures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Snippets</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <i class="fas fa-sun theme-toggle" id="themeBtn"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-creative">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="zoom-out-right">
+                    <span class="badge px-3 py-2 rounded-pill mb-3" style="background: rgba(6, 182, 212, 0.15); color: var(--accent-color);">
+                        <i class="fas fa-bolt me-1"></i> CODESPACE TRENDS
+                    </span>
+                    <h1 class="display-3 fw-bold mb-3" style="line-height: 1.15;">Creative Engine For Developers</h1>
+                    <p class="fs-5 opacity-75 mb-4">A minimalist playground built with modern layout standards. Dive clean into code patterns, logic pipelines, and system structures.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#explore-posts" class="btn btn-lg px-4 rounded-pill text-white" style="background: var(--primary-glow);">Start Reading</a>
+                        <button class="btn btn-lg btn-outline-secondary px-4 rounded-pill"><i class="fab fa-github"></i> Clone Kit</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center" data-aos="zoom-out-left">
+                    <div class="position-relative d-inline-block">
+                        <div class="position-absolute top-50 start-50 translate-middle rounded-circle" style="width: 105%; height: 105%; background: var(--primary-glow); filter: blur(30px); opacity: 0.2; z-index: -1;"></div>
+                        <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=600" class="img-fluid rounded-4 shadow-lg" alt="Creative Workspace" style="border: 1px solid var(--border-color);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5" id="explore-posts">
+        
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-12 text-center">
+                <h4 class="fw-bold mb-3">Filter Knowledge Hub</h4>
+                <div class="d-flex flex-wrap justify-content-center gap-2" id="filter-container">
+                    <span class="category-pill active" data-filter="all">All Modules</span>
+                    <span class="category-pill" data-filter="django">Django Stack</span>
+                    <span class="category-pill" data-filter="cybersecurity">Cybersecurity</span>
+                    <span class="category-pill" data-filter="layouts">UX & Layouts</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row g-4" id="posts-grid">
+                    
+                    <div class="col-md-6 post-item" data-category="django" data-aos="fade-up">
+                        <article class="card h-100 blog-card-creative">
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500" class="card-img-top" alt="Backend">
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2"><span class="small opacity-75 fw-bold"><i class="far fa-folder-open me-1"></i> Django Stack</span></div>
+                                <h4 class="card-title fw-bold mb-3">Refactoring Relational ORMs for Scale</h4>
+                                <p style="color: var(--text-muted);">Implement optimal optimization lookups inside complex relational structures to drop overhead load times instantly.</p>
+                                <div class="mt-auto pt-3 border-top border-secondary-subtle d-flex justify-content-between align-items-center">
+                                    <small style="color: var(--text-muted);">5 min read</small>
+                                    <a href="#" class="fw-bold text-decoration-none" style="color: var(--accent-color);">Dive In <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 post-item" data-category="cybersecurity" data-aos="fade-up" data-aos-delay="100">
+                        <article class="card h-100 blog-card-creative">
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500" class="card-img-top" alt="Security">
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2"><span class="small opacity-75 fw-bold"><i class="far fa-folder-open me-1"></i> Cybersecurity</span></div>
+                                <h4 class="card-title fw-bold mb-3">Defensive Strategies Against Auth Abuse</h4>
+                                <p style="color: var(--text-muted);">How to architect middleware layers capable of intercepting bot patterns before they target application routes.</p>
+                                <div class="mt-auto pt-3 border-top border-secondary-subtle d-flex justify-content-between align-items-center">
+                                    <small style="color: var(--text-muted);">8 min read</small>
+                                    <a href="#" class="fw-bold text-decoration-none" style="color: var(--accent-color);">Dive In <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 post-item" data-category="layouts" data-aos="fade-up" data-aos-delay="200">
+                        <article class="card h-100 blog-card-creative">
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500" class="card-img-top" alt="UIUX">
+                            </div>
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2"><span class="small opacity-75 fw-bold"><i class="far fa-folder-open me-1"></i> UX & Layouts</span></div>
+                                <h4 class="card-title fw-bold mb-3">Asymmetrical Scannable Typography</h4>
+                                <p style="color: var(--text-muted);">A comprehensive guide detailing visual hierarchy patterns that capture and direct modern reading workflows.</p>
+                                <div class="mt-auto pt-3 border-top border-secondary-subtle d-flex justify-content-between align-items-center">
+                                    <small style="color: var(--text-muted);">4 min read</small>
+                                    <a href="#" class="fw-bold text-decoration-none" style="color: var(--accent-color);">Dive In <i class="fas fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <div class="sidebar-creative" data-aos="fade-left">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-search me-2 text-info"></i>Search Vault</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-transparent text-white border-secondary" placeholder="Type key phrases..." style="border-radius: 30px 0 0 30px;">
+                        <button class="btn btn-info px-4" type="button" style="border-radius: 0 30px 30px 0; color: white;"><i class="fas fa-bolt"></i></button>
+                    </div>
+                </div>
+
+                <div class="sidebar-creative text-center position-relative overflow-hidden" data-aos="fade-left" data-aos-delay="100">
+                    <div class="position-absolute top-0 start-0 w-100" style="height: 5px; background: var(--primary-glow);"></div>
+                    <div class="mb-3 mt-2" style="color: #a855f7;"><i class="fas fa-glass-martini-alt fa-2x"></i></div>
+                    <h5 class="fw-bold">Join the Architecture Circle</h5>
+                    <p class="small" style="color: var(--text-muted);">Zero spam. Direct engineering summaries compiled directly into code files.</p>
+                    <form>
+                        <input type="email" class="form-control bg-transparent text-white text-center mb-3 border-secondary rounded-pill" placeholder="dev@domain.com" required>
+                        <button class="btn w-100 rounded-pill text-white fw-bold" style="background: var(--primary-glow);" type="submit">Unlock Updates</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-5 mt-5" style="background: #060913; border-top: 1px solid var(--border-color);">
+        <div class="container text-center">
+            <h4 class="fw-bold text-white mb-3">DevPaper.</h4>
+            <div class="d-flex justify-content-center gap-4 mb-4 fs-5">
+                <a href="#" class="text-secondary"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-secondary"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-secondary"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="small opacity-50 mb-0">&copy; 2026 DevPaper Sandbox. Designed for performance-oriented interfaces.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Init Scroll Libraries
+        AOS.init({ duration: 900, once: true, offset: 60 });
+
+        // Real-Time Reading Progress Calculation Hook
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + "%";
+        });
+
+        // Creative Theme Controller Context
+        const themeBtn = document.getElementById('themeBtn');
+        themeBtn.addEventListener('click', () => {
+            const activeTheme = document.documentElement.getAttribute('data-theme');
+            if (activeTheme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                themeBtn.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeBtn.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+
+        // Smart Native Filtering Logic Engine
+        const filterPills = document.querySelectorAll('#filter-container .category-pill');
+        const postCards = document.querySelectorAll('#posts-grid .post-item');
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Change Active Tab Visual State
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                
+                const filterGroup = pill.getAttribute('data-filter');
+                
+                postCards.forEach(card => {
+                    const postCategory = card.getAttribute('data-category');
+                    if(filterGroup === 'all' || postCategory === filterGroup) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+                // Refresh Scroll Library animations for newly rearranged visibility
+                AOS.refresh();
+            });
+        });
+    </script>
+</body>
+</html>

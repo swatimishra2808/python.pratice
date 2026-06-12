@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGrow | Digital Marketing Agency</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #06b6d4;
+            --dark-color: #0f172a;
+            --light-bg: #f8fafc;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        .text-primary-custom { color: var(--primary-color); }
+        .bg-gradient-custom { 
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 160px 0 100px 0;
+            background: radial-gradient(circle at 90% 10%, rgba(6, 182, 212, 0.1), transparent 40%),
+                        radial-gradient(circle at 10% 90%, rgba(79, 70, 229, 0.1), transparent 40%);
+        }
+
+        /* Services Cards */
+        .service-card {
+            border: none;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1);
+        }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: var(--light-bg);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-primary-custom" href="#"><i class="fa-solid fa-chart-line me-2"></i>NexGrow</a>
+            <button class="navbar-collapse-toggler navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link mx-2" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link mx-2" href="#testimonials">Success Stories</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-primary ms-2 px-4 rounded-pill" href="#contact">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <span class="badge bg-primary-subtle text-primary-custom px-3 py-2 rounded-pill fw-semibold mb-3">Next-Gen Digital Marketing</span>
+                    <h1 class="display-4 fw-bold text-dark mb-4">We Scale Brands Online Through Data-Driven ROI</h1>
+                    <p class="lead text-muted mb-5">Stop wasting budget on vanity metrics. Our performance marketing strategies put your brand in front of ready-to-buy customers.</p>
+                    <div class="d-sm-flex justify-content-center justify-content-lg-start gap-3">
+                        <a href="#contact" class="btn btn-primary bg-gradient-custom border-0 px-4 py-3 rounded-pill fw-medium shadow mb-3 mb-sm-0">Book a Free Strategy Call</a>
+                        <a href="#services" class="btn btn-light px-4 py-3 rounded-pill fw-medium border shadow-sm">Explore Services</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="p-5 bg-white rounded-4 shadow-lg position-relative mx-auto" style="max-width: 500px;">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h5 class="fw-bold m-0">Campaign ROI</h5>
+                            <span class="text-success fw-bold"><i class="fa-solid fa-arrow-trend-up me-1"></i> +342%</span>
+                        </div>
+                        <div class="progress mb-3" style="height: 25px;">
+                            <div class="progress-bar bg-gradient-custom" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">SEO Traffic</div>
+                        </div>
+                        <div class="progress mb-3" style="height: 25px;">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">Paid Ads</div>
+                        </div>
+                        <div class="progress mb-4" style="height: 25px;">
+                            <div class="progress-bar bg-warning text-dark" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">Social Media</div>
+                        </div>
+                        <div class="row g-2 mt-2">
+                            <div class="col-6"><div class="p-3 bg-light rounded text-center"><small class="text-muted d-block">Leads Generated</small><strong class="fs-4 text-dark">12.4k</strong></div></div>
+                            <div class="col-6"><div class="p-3 bg-light rounded text-center"><small class="text-muted d-block">Conversion Rate</small><strong class="fs-4 text-dark">4.8%</strong></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features-section py-5">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <h2 class="fw-bold mb-4">Why Top E-commerce & SaaS Brands Choose Us</h2>
+                    <p class="text-muted">We eliminate the guesswork. Every strategy we build is backed by consumer psychology, strict market testing, and real-time analytics dashboards.</p>
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fa-solid fa-circle-check text-success fs-5 me-3 mt-1"></i>
+                            <div><strong>No Long-Term Contracts:</strong> We retain clients through continuous performance, not rigid lock-ins.</div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-start">
+                            <i class="fa-solid fa-circle-check text-success fs-5 me-3 mt-1"></i>
+                            <div><strong>Real-Time Analytics Dashboard:</strong> Live access to your pipeline numbers, ad spend, and conversions.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <div class="text-primary-custom fs-3 mb-2"><i class="fa-solid fa-bullseye"></i></div>
+                                <h5 class="fw-bold">Hyper-Targeting</h5>
+                                <p class="text-muted small m-0">Reach intent-driven buyers who are actively searching for your specific solution right now.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+                                <div class="text-info fs-3 mb-2"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                <h5 class="fw-bold">High-Converting Creative</h5>
+                                <p class="text-muted small m-0">Ad copies and landing page designs thoroughly optimized for psychological triggers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container py-5">
+            <div class="text-center max-width-md mx-auto mb-5">
+                <h2 class="fw-bold">Our Performance Marketing Channels</h2>
+                <p class="text-muted">Everything you need to turn clicks into predictable recurring revenue streams.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card service-card h-100 p-4">
+                        <div class="card-body p-0">
+                            <div class="icon-box bg-primary-subtle text-primary-custom">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                            </div>
+                            <h4 class="card-title fw-bold mb-3">Search Engine Optimization</h4>
+                            <p class="card-text text-muted">Dominate organic search positions for high-intent keywords that drive sales completely free of ad spend.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card h-100 p
